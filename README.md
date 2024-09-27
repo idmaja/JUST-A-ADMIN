@@ -34,17 +34,11 @@ npm install
 Create a `.env` file in the root of the project and add the following environment variables:
 
 ```plaintext
-NEXT_PUBLIC_API_BASE_URL=https://api.jikan.moe/v4
-
-GITHUB_CLIENT = <your_github_client>
-GITHUB_SECRET = <your_github_secret>
-
-GOOGLE_CLIENT_ID = <your_google_client_id>
-GOOGLE_CLIENT_SECRET = <your_google_client_secret>
-
 NEXTAUTH_SECRET = <your_nextauth_secret>
 
-DATABASE_URL= <your_mongodb_url>
+NEXTAUTH_URL= http://localhost:3001
+
+DATABASE_URL= <your_mongodb_url>l>
 ```
 
 ### 4. Prisma Setup
