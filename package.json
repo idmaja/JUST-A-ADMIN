@@ -9,9 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.7",
+    "@prisma/client": "^5.19.1",
+    "bcryptjs": "^2.4.3",
+    "framer-motion": "^11.5.6",
+    "just-a-admin": "file:",
+    "next": "14.2.13",
+    "next-auth": "^4.24.7",
+    "prisma": "^5.19.1",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.2.13"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "postcss": "^8",

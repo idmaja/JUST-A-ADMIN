@@ -3,21 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+img {
+  transition: 0.3s ease all;
+  -webkit-transition: 0.3s ease all;
+  -moz-transition: 0.3s ease all;
+  -ms-transition: 0.3s ease all;
+  -o-transition: 0.3s ease all;
+}
+
+img:hover {
+  scale: 102%;
 }
 
 @layer utilities {
@@ -25,3 +31,157 @@ body {
     text-wrap: balance;
   }
 }
+
+/* .custom-loader {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 16px solid #ffc639;
+  border-right-color: #393e46;
+  position: relative;
+  animation: s4 2s infinite linear;
+}
+.custom-loader:before,
+.custom-loader:after {
+  content: "";
+  position: absolute;
+  inset:-16px;
+  border-radius: 50%;
+  border:inherit;
+  animation:inherit;
+  animation-duration: 4s;
+}
+.custom-loader:after {
+  animation-duration: 8s;
+}
+
+@keyframes s4 {
+  100% {transform: rotate(1turn)}
+} */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #49416D;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #E7C672;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2D2944;
+}
+
+
+/* HTML: <div class="loader"></div> */
+.custom-loader {
+  width: 120px;
+  height: 22px;
+  border-radius: 20px;
+  color: #ffc639;
+  border: 2px solid;
+  position: relative;
+}
+.custom-loader::before {
+  content: "";
+  position: absolute;
+  margin: 2px;
+  inset: 0 100% 0 0;
+  border-radius: inherit;
+  background: currentColor;
+  animation: l6 2s infinite;
+}
+@keyframes l6 {
+    100% {inset:0}
+}
+
+
+/* globals.css */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+main {
+  margin-left: 16rem; /* Matches the sidebar width */
+  transition: margin-left 0.3s ease-in-out;
+}
+
+nav {
+  background-color: #2d3748; /* Dark gray */
+  transition: transform 0.3s ease-in-out;
+}
+
+a {
+  color: #cbd5e0; /* Light gray for links */
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #E7C672; /* Darker red on hover */
+}
+
+
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 3s linear infinite;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.7s ease-out forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
