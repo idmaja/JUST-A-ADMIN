@@ -36,7 +36,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+    <div className="flex items-center justify-center min-h-screen overflow-hidden bg-gray-50">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -56,7 +56,7 @@ export default function LoginPage() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="p-4 mb-4 text-white bg-red-500 rounded-lg shadow-md"
+                className="p-4 mb-4 text-sm text-center rounded-lg shadow-md text-color-primary bg-color-red"
               >
                 <p>{error}</p>
               </motion.div>
