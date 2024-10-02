@@ -56,7 +56,7 @@ export default function LoginPage() {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="p-4 mb-4 text-white bg-red-500 rounded-lg shadow-md"
+                className="p-4 mb-4 text-center rounded-lg shadow-md text-color-primary bg-color-red "
               >
                 <p>{error}</p>
               </motion.div>

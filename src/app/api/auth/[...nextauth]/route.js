@@ -28,7 +28,7 @@ export const authOptions = {
               role: user.role,
             };
         }
-        return null; // Return null if no user found or password doesn't match
+        throw new Error('Invalid Email or Password!');  // Return null if no user found or password doesn't match
       }
     })
   ],
