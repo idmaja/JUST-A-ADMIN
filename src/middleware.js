@@ -10,6 +10,10 @@ export async function middleware(req) {
     return NextResponse.next();
   }
 
+  if (pathname.startsWith("/api")) {
+    return NextResponse.next();
+  }
+
   // Allow access to the signout API
   if (pathname === "/api/auth/signout") {
     return NextResponse.next();
