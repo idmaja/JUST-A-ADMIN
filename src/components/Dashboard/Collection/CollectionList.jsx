@@ -41,7 +41,7 @@ const CollectionList = ({ collection }) => {
           {/* Horizontal list of collections for the same user_email */}
           <div className="space-y-4">
             {groupedCollections[userEmail].map((collectionItem) => (
-              <div key={collectionItem.id} className="flex items-center p-4 space-x-6 bg-white rounded-lg shadow-md">
+              <div key={collectionItem.id} className="flex items-center p-4 space-x-6 rounded-lg shadow-md">
                 {/* Anime Image */}
                 <Image 
                   src={collectionItem.anime_image} 

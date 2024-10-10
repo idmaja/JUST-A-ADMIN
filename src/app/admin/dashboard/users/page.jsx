@@ -1,4 +1,4 @@
-import UserList from "@/components/Dashboard/UserList";
+import UserList from "@/components/Dashboard/User/UserList";
 import prisma from "@/services/prisma";
 
 const Page = async () => {

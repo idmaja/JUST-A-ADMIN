@@ -1,5 +1,5 @@
 // import { getAdminSession } from "@/services/auth-service";
-import CollectionList from "@/components/Dashboard/CollectionList";
+import CollectionList from "@/components/Dashboard/Collection/CollectionList";
 import prisma from "@/services/prisma";
 
 const Page = async () => {

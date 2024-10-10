@@ -130,17 +130,14 @@ a {
   color: #cbd5e0; /* Light gray for links */
 }
 
-a:hover {
-  text-decoration: underline;
-}
 
 button {
   transition: background-color 0.2s ease-in-out;
 }
 
-button:hover {
-  background-color: #E7C672; /* Darker red on hover */
-}
+/* button:hover {
+  background-color: #E7C672;
+} */
 
 
 
@@ -185,3 +182,18 @@ button:hover {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
+
+@keyframes modal-pop-up {
+  from {
+    transform: translateY(50%) scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-modal-pop-up {
+  animation: modal-pop-up 0.3s ease-out forwards;
+}

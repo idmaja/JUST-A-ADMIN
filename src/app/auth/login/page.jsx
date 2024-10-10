@@ -36,17 +36,19 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
+    <div className="flex items-center justify-center mt-56 min-h-80 ">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg"
+        className="w-full max-w-md p-10 space-y-6 rounded-lg shadow-xl bg-slate-200"
       >
         {/* Animated title */}
-        <h1 className="mb-8 text-3xl font-extrabold text-center text-blue-600 animate-pulse">
-          <Image src="../just-a-logo.svg" width={150} height={150}/>
+        <h1 className="flex flex-col items-center justify-center mb-8 text-3xl font-extrabold text-center text-color-dark">
+          <Image src="../just-a-logo.svg" width={1000} height={1000} className="w-16 h-16 mb-2" />
+          Dashboard <span className="mt-1 text-color-yellow">JUST-A</span> 
         </h1>
+
 
         {/* Form */}
         <form onSubmit={handleSignIn} className="space-y-6">
@@ -89,7 +91,7 @@ export default function LoginPage() {
             type="submit"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full p-3 text-lg font-semibold transition-all bg-blue-500 rounded-lg shadow-lg text-color-primary hover:bg-blue-600"
+            className="w-full p-3 text-lg font-semibold text-black transition-all border rounded-lg shadow-lg border-color-blue hover:bg-blue-600 hover:text-white"
           >
             Sign In
           </motion.button>

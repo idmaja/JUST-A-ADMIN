@@ -50,7 +50,7 @@ const CommentList = ({ comment }) => {
                 <div className="mt-2">
                   <button
                     onClick={() => handleDelete(commentItem.id)}
-                    className="flex items-center px-4 py-2 text-white transition-colors rounded bg-color-red hover:bg-color-primary hover:text-color-accent"
+                    className="flex items-center px-4 py-2 text-white transition-colors rounded bg-color-red hover:bg-red-700"
                   >
                     Delete
                     <Trash className="ml-2" size={18} />

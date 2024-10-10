@@ -1,4 +1,4 @@
-import CommentList from "@/components/Dashboard/CommentList";
+import CommentList from "@/components/Dashboard/Comment/CommentList";
 import prisma from "@/services/prisma";
 
 const Page = async () => {

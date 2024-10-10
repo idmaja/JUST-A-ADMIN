@@ -11,7 +11,7 @@ const Header = ({title, linkHref, linkTitle}) => {
     useEffect(() => {
       setTimeout(() => {
         setShowHeader(true);
-      }, 300);
+      }, 100);
     }, []);
 
     return (
@@ -21,10 +21,8 @@ const Header = ({title, linkHref, linkTitle}) => {
                 <h1 className="text-2xl font-bold text-color-primary">{title}</h1>
             </div>
             { linkHref && linkTitle ?
-                <Link href={linkHref} className="transition-all py-2.5 px-5 me-2 mb-2 text-sm font-medium text-color-blue focus:outline-none bg-white 
-                rounded-full border border-color-secondary hover:bg-color-secondary hover:text-color-primary focus:z-10 focus:ring-4 focus:ring-gray-100 
-                dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white 
-                dark:hover:bg-gray-700 hover:no-underline">
+                <Link href={linkHref} className="transition-all py-2.5 px-5 me-2 mb-2 text-sm font-medium text-color-blue focus:outline-none
+                rounded-full border border-color-secondary hover:bg-color-secondary hover:text-color-primary hover:no-underline">
                     {linkTitle}
                 </Link>
                 : null
