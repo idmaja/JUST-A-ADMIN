@@ -92,7 +92,7 @@ export default function RootLayout({ children }) {
                         <Link 
                           href="/admin/dashboard/users"
                           className="px-4 py-3 text-xl font-bold transition-all rounded hover:no-underline text-color-blue focus:outline-none border-color-accent hover:bg-color-hover hover:text-color-primary focus:z-10 focus:ring-4 focus:ring-color-blue">
-                            Users 
+                            Accounts 
                             <Users size={25} weight="bold" />
                         </Link>
                       </div>
