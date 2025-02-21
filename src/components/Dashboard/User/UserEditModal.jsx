@@ -1,5 +1,3 @@
-// src/components/Dashboard/UserEditModal.jsx
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -12,7 +10,6 @@ const UserEditModal = ({ user, onClose }) => {
   const [isMounted, setIsMounted] = useState(false); // For animation
 
   useEffect(() => {
-    // Trigger modal animation on mount
     setIsMounted(true);
   }, []);
 
@@ -30,7 +27,7 @@ const UserEditModal = ({ user, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-700 bg-opacity-50">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-700 bg-opacity-40">
       <div
         className={`p-6 bg-color-hover rounded-lg shadow-lg transform transition-transform duration-300 w-80 ${
           isMounted ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'
@@ -64,13 +61,21 @@ const UserEditModal = ({ user, onClose }) => {
             className="w-full p-2 border rounded"
           />
         </div>
-        <div className="mb-4">
-          <label className="block text-color-primary">Role</label>
-          <select value={role} onChange={(e) => setRole(e.target.value)} className="w-full p-2 border rounded">
-            <option value="user">User</option>
-            <option value="admin">Admin</option>
-          </select>
-        </div>
+
+        {/* Hanya tampilkan role jika user bukan "user" */}
+        {user.role !== "user" && (
+          <div className="mb-4">
+            <label className="block text-color-primary">Role</label>
+            <select
+              value={role}
+              onChange={(e) => setRole(e.target.value)}
+              className="w-full p-2 border rounded"
+            >
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+        )}
         <div className="flex justify-end gap-2">
           <button onClick={onClose} className="px-4 py-2 rounded text-color-primary bg-color-red hover:bg-red-600">Cancel</button>
           <button onClick={handleSave} className="px-4 py-2 rounded text-color-primary bg-color-secondary hover:bg-green-600">Save</button>

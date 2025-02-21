@@ -11,13 +11,13 @@ export const authOptions = {
         password: { label: "Password", type: "password" }
       },
       async authorize(credentials) {
-        console.log("Attempting to log in with:", credentials);
+        // console.log("Attempting to log in with:", credentials);
 
         const user = await prisma.user.findUnique({
           where: { email: credentials.email }
         });
 
-        console.log("Fetched user:", user);
+        // console.log("Fetched user:", user);
 
         // Check if the user exists and if the passwords match
         if (user && credentials.password === user.password) {

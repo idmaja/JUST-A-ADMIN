@@ -14,8 +14,8 @@ export default function LoginPage() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (session) {
-      router.push("/"); // Redirect to dashboard if already logged in
+    if (session && session.user) {
+      router.push("/"); 
     }
   }, [session]);
 
@@ -45,7 +45,7 @@ export default function LoginPage() {
       >
         {/* Animated title */}
         <h1 className="flex flex-col items-center justify-center mb-8 text-3xl font-extrabold text-center text-color-dark">
-          <Image src="../just-a-logo.svg" width={1000} height={1000} className="w-16 h-16 mb-2" />
+          <Image src="/just-a-logo.svg" width={1000} height={1000} className="w-16 h-16 mb-2" />
           Dashboard <span className="mt-1 text-color-yellow">JUST-A</span> 
         </h1>
 
