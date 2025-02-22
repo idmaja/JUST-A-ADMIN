@@ -11,7 +11,7 @@ const Page = async () => {
   const session = await getSession();
   const usernameLoggedIn = session?.user?.name;
 
-  console.log('data:', usernameLoggedIn)
+  // console.log('data:', usernameLoggedIn)
 
   const users = await prisma.user.findMany();
   const collection = await prisma.collection.findMany();

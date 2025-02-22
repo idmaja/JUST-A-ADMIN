@@ -1,5 +1,3 @@
-// src/components/Dashboard/UserList.jsx
-
 "use client";
 
 import { useState } from "react";
@@ -14,16 +12,16 @@ const UserList = ({ users }) => {
     if (!confirmed) return;
 
     await fetch(`/api/v1/admin/users/${id}`, { method: "DELETE" });
-    location.reload();  // Reload the page after deletion
+    location.reload();
   };
 
   return (
-    <div className="mt-6 space-y-6">
+    <div className="grid grid-cols-1 gap-6 mt-6 md:grid-cols-2">
       {users.map((user) => (
         <div key={user.id} className="p-6 transition-all transform rounded-lg shadow-lg bg-color-accent hover:scale-105">
           <div className="flex items-center mb-2">
-              <Play size={20} weight="fill" className="mr-2 text-color-secondary"/>
-              <h3 className="text-lg font-bold text-color-primary">Username: {user.username || "N/A"}</h3>
+            <Play size={20} weight="fill" className="mr-2 text-color-secondary" />
+            <h3 className="text-lg font-bold text-color-primary">Username: {user.username || "N/A"}</h3>
           </div>
           <p className="text-color-primary">Email: {user.email}</p>
           <p className="text-color-primary">Password: {user.password || "N/A"}</p>
