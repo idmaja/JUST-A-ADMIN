@@ -78,7 +78,7 @@ npm run build
 Then, to start the production server, run:
 
 ```bash
-npm run dev
+$env:PORT=3001; npm run dev
 ```
 
 ## Learn More
