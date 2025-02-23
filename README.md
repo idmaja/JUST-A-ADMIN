@@ -58,7 +58,7 @@ npx prisma migrate dev
 ### 5. Running the Development Server
 
 ```bash
-npm run dev
+$env:PORT=3001; npm run dev
 ```
 
 Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
@@ -78,7 +78,7 @@ npm run build
 Then, to start the production server, run:
 
 ```bash
-$env:PORT=3001; npm run dev
+ npm run dev
 ```
 
 ## Learn More
