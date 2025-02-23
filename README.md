@@ -38,7 +38,7 @@ NEXTAUTH_SECRET = <your_nextauth_secret>
 
 NEXTAUTH_URL= http://localhost:3001
 
-DATABASE_URL= <your_mongodb_url>l>
+DATABASE_URL= <your_mongodb_url>
 ```
 
 ### 4. Prisma Setup
