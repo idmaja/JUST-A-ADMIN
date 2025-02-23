@@ -28,25 +28,20 @@ const CommentList = ({ comment }) => {
   };
 
   return (
-    <div className="mt-6 space-y-6">
-      {/* Render grouped comments by username */}
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
       {Object.keys(groupedComments).map((username) => (
         <div key={username} className="p-6 transition-all transform rounded-lg shadow-lg bg-color-accent hover:scale-105">
-          {/* Username */}
           <div className="flex items-center mb-4">
             <Play size={20} weight="fill" className="mr-2 text-color-secondary" />
             <h3 className="text-lg font-bold text-color-primary">Username: {username || "N/A"}</h3>
           </div>
           
-          {/* Group comments by anime_mal_id */}
           <div className="space-y-4">
             {groupedComments[username].map((commentItem) => (
               <div key={commentItem.id} className="p-4 rounded-lg shadow-md bg-color-primary">
-                {/* Anime Info */}
                 <p className="font-bold text-color-accent">Anime Title: {commentItem.anime_title || "N/A"}</p>
                 <p className="text-color-accent">Comment: {commentItem.comment}</p>
                 
-                {/* Delete Button */}
                 <div className="mt-2">
                   <button
                     onClick={() => handleDelete(commentItem.id)}

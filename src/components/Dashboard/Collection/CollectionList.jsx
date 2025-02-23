@@ -29,16 +29,14 @@ const CollectionList = ({ collection }) => {
   };
 
   return (
-    <div className="mt-6 space-y-6">
+    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
       {Object.keys(groupedCollections).map((userEmail) => (
         <div key={userEmail} className="p-6 transition-all transform rounded-lg shadow-lg bg-color-accent hover:scale-105">
-          {/* User Email Header */}
           <div className="flex items-center mb-4">
             <Play size={20} weight="fill" className="mr-2 text-color-secondary" />
             <h3 className="text-lg font-bold text-color-primary">User Email: {userEmail || "N/A"}</h3>
           </div>
           
-          {/* Horizontal list of collections for the same user_email */}
           <div className="space-y-4">
             {groupedCollections[userEmail].map((collectionItem) => (
               <div key={collectionItem.id} className="flex items-center p-4 space-x-6 rounded-lg shadow-md">
@@ -50,13 +48,12 @@ const CollectionList = ({ collection }) => {
                   className="rounded-md"
                   alt={collectionItem.anime_title || "Anime image"} 
                 />
-                {/* Anime Details */}
+
                 <div>
                   <p className="text-color-primary">Anime ID: {collectionItem.anime_mal_id || "N/A"}</p>
                   <p className="text-color-primary">Title: {collectionItem.anime_title || "N/A"}</p>
                 </div>
 
-                {/* Delete Button */}
                 <div className="ml-auto">
                   <button
                     onClick={() => handleDelete(collectionItem.id)}

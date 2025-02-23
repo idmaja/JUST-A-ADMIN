@@ -98,7 +98,7 @@ const AnimeForm = ({ selectedAnime, selectedAnimeRec, selectedAnimeTop, clearFor
       <form onSubmit={handleSubmit} className="p-6 mb-8 rounded-lg shadow-xl">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <div>
-            <label className="block mb-2 text-sm font-medium text-color-primary">Anime MAL ID</label>
+            <label className="block mb-2 text-sm font-medium text-color-primary">Anime ID</label>
             <input
               type="text"
               name="anime_mal_id"
@@ -190,7 +190,7 @@ const AnimeForm = ({ selectedAnime, selectedAnimeRec, selectedAnimeTop, clearFor
       )}
 
       {showAlreadyModal && (
-        <SuccessModal message="Anime with this MAL ID already exists!" />
+        <SuccessModal message="Anime with this ID already exists!" />
       )}
     </>
   );
