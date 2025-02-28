@@ -19,7 +19,6 @@ export const authOptions = {
 
         // console.log("Fetched user:", user);
 
-        // Check if the user exists and if the passwords match
         if (user && credentials.password === user.password) {
             return {
               id: user.id,
@@ -28,7 +27,7 @@ export const authOptions = {
               role: user.role,
             };
         }
-        throw new Error('Invalid Email or Password!');  // Return null if no user found or password doesn't match
+        throw new Error('Invalid Email or Password!');  
       }
     })
   ],

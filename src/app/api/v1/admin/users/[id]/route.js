@@ -3,6 +3,15 @@ import prisma from "@/services/prisma";
 export async function DELETE(req, { params }) {
   const { id } = params;
 
+  const user = await prisma.user.findUnique({ where: { id } });
+
+  if (user && user.username === "admin") {
+    return new Response(
+      JSON.stringify({ status: 403, isDeleted: false, message: "Tidak dapat menghapus user admin" }),
+      { headers: { "Content-Type": "application/json" } }
+    );
+  }
+
   try {
     await prisma.user.delete({ where: { id } });
     return new Response(JSON.stringify({ status: 200, isDeleted: true }), {

@@ -3,16 +3,63 @@
 import { useState } from "react";
 import UserEditModal from "./UserEditModal";
 import { Trash, PencilSimple, Play } from "@phosphor-icons/react";
+import DeleteModal from "@/components/Utilities/DeleteModal";
+import SuccessModal from "../../Utilities/SuccessModal";
 
 const UserList = ({ users }) => {
-  const [selectedUser, setSelectedUser] = useState(null);
 
-  const handleDelete = async (id) => {
-    const confirmed = confirm("Are you sure you want to delete this user?");
-    if (!confirmed) return;
+  const [selectedUserEdit, setSelectedUserEdit] = useState(null);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedUserDelete, setSelectedUserDelete] = useState(null);
 
-    await fetch(`/api/v1/admin/users/${id}`, { method: "DELETE" });
-    location.reload();
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showFailedModal, setShowFailedModal] = useState(false);
+  const [showAlreadyModal, setShowAlreadyModal] = useState(false);
+
+  const handleOpenDeleteModal = (user) => {
+    setSelectedUserDelete(user);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setSelectedUserDelete(null);
+    setIsDeleteModalOpen(false);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (selectedUserDelete) {
+      try {
+        const response = await fetch(`/api/v1/admin/users/${selectedUserDelete.id}`, { 
+          method: "DELETE" 
+        });
+        const result = await response.json();
+
+        if (result.status === 200 && result.isDeleted) {
+          setShowSuccessModal(true);
+          setTimeout(() => {
+            setShowSuccessModal(false);
+            location.reload();
+          }, 2000);
+        } else if (result.status === 403) {
+          setShowAlreadyModal(true);
+          setTimeout(() => {
+            setShowAlreadyModal(false);
+          }, 2000);
+        } else {
+          setShowFailedModal(true);
+          setTimeout(() => {
+            setShowFailedModal(false);
+          }, 2000);
+        }
+      } catch (error) {
+        console.error("Error deleting user: ", error);
+        setShowFailedModal(true);
+        setTimeout(() => {
+          setShowFailedModal(false);
+        }, 2000);
+      }
+      handleCloseDeleteModal();
+    }
   };
 
   return (
@@ -28,14 +75,14 @@ const UserList = ({ users }) => {
           <p className="text-color-primary">Role: {user.role}</p>
           <div className="flex mt-4 space-x-4">
             <button
-              onClick={() => setSelectedUser(user)}
+              onClick={() => setSelectedUserEdit(user)}
               className="flex items-center px-4 py-2 text-white transition-colors rounded bg-color-secondary hover:bg-color-primary hover:text-color-accent"
             >
               Edit
               <PencilSimple className="ml-2" size={18} />
             </button>
             <button
-              onClick={() => handleDelete(user.id)}
+              onClick={() => handleOpenDeleteModal(user)}
               className="flex items-center px-4 py-2 text-white transition-colors rounded bg-color-red hover:bg-color-primary hover:text-color-accent"
             >
               Delete
@@ -44,8 +91,28 @@ const UserList = ({ users }) => {
           </div>
         </div>
       ))}
-      {selectedUser && (
-        <UserEditModal user={selectedUser} onClose={() => setSelectedUser(null)} />
+      <DeleteModal 
+        isOpen={isDeleteModalOpen}
+        onClose={handleCloseDeleteModal}
+        onConfirm={handleConfirmDelete}
+        title="Hapus Pengguna"
+        message={`Anda yakin ingin menghapus pengguna "${selectedUserDelete?.username}"?`}
+      />
+      {selectedUserEdit && (
+        <UserEditModal 
+          user={selectedUserEdit} 
+          onClose={() => setSelectedUserEdit(null)} 
+        />
+      )}
+
+      {showSuccessModal && (
+        <SuccessModal message="Akun berhasil dihapus!" />
+      )}
+      {showFailedModal && (
+        <SuccessModal message="Gagal menghapus akun, coba lagi!" />
+      )}
+      {showAlreadyModal && (
+        <SuccessModal message="Admin tidak bisa dihapus!" />
       )}
     </div>
   );

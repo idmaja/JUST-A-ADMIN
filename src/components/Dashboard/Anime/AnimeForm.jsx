@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import SuccessModal from './SuccessModal';
+import SuccessModal from '../../Utilities/SuccessModal';
 
 const AnimeForm = ({ selectedAnime, selectedAnimeRec, selectedAnimeTop, clearForm }) => {
   const router = useRouter()
@@ -75,18 +75,18 @@ const AnimeForm = ({ selectedAnime, selectedAnimeRec, selectedAnimeTop, clearFor
         setShowAlreadyModal(true); 
         setTimeout(() => {
           setShowAlreadyModal(false); 
-        }, 3000); 
+        }, 2000); 
       } else if (result.isCreated) {
         setShowSuccessModal(true); 
         setTimeout(() => {
           setShowSuccessModal(false); 
           router.refresh();
-        }, 3000); 
+        }, 2000); 
       } else {
         setShowFailedModal(true); 
         setTimeout(() => {
           setShowFailedModal(false); 
-        }, 3000);
+        }, 2000);
       }
     } catch (error) {
       console.error('Error:', error);

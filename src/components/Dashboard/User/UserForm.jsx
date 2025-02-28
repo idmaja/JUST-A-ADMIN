@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import SuccessModal from '../Anime/SuccessModal';
+import SuccessModal from '../../Utilities/SuccessModal';
 
 const UserForm = () => {
   const router = useRouter();

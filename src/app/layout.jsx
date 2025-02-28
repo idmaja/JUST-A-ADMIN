@@ -1,5 +1,3 @@
-// src/app/layout.jsx
-
 "use client";
 
 import { Gabarito, Roboto } from "next/font/google";
@@ -19,22 +17,6 @@ const roboto = Roboto({
 export default function RootLayout({ children }) {
   const [isNavOpen, setIsNavOpen] = useState(true); // State to control navbar visibility
   const pathname = usePathname(); // Get the current route
-  
-  // Function to handle sign out and clear any stored tokens
-  // const handleSignOut = async () => {
-  //   if (typeof window !== "undefined") {
-  //     // Clear local storage or any other client-side storage for tokens
-  //     localStorage.removeItem("token");
-  //     sessionStorage.removeItem("token");
-  
-  //     // Delete specific NextAuth cookies
-  //     document.cookie = "next-auth.callback-url=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-  //     document.cookie = "next-auth.csrf-token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-  
-  //     // Redirect to the login page
-  //     window.location.href = '/auth/login';
-  //   }
-  // };
 
   // Automatically hide the sidebar on /auth/login
   const isLoginPage = pathname === '/auth/login'; // Check if we are on the login page
@@ -131,15 +113,9 @@ export default function RootLayout({ children }) {
 
                   {/* Centering Sign Out Button */}
                   <div className="flex justify-center mb-4">
-                      {/* <Link 
-                        href="/auth/login"
-                        className="flex items-center justify-center px-5 py-2 text-lg font-medium transition-all bg-white border rounded-full gap-x-2 text-color-blue focus:outline-none border-color-secondary hover:bg-color-red hover:text-color-primary focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 hover:no-underline">
-                          Sign Out
-                          <SignOut size={15} weight="bold" />
-                      </Link> */}
                     <button
                       onClick={handleSignOut}
-                      className="flex items-center justify-center px-5 py-2 text-lg font-medium transition-all border rounded-full gap-x-2 text-color-blue focus:outline-none border-color-secondary hover:bg-color-red hover:no-underline"
+                      className="flex items-center justify-center px-5 py-2 text-lg font-medium transition-all border rounded-full gap-x-2 text-color-blue hover:text-color-primary focus:outline-none border-color-secondary hover:bg-color-red hover:no-underline"
                     >
                       Sign Out
                       <SignOut size={15} weight="bold" />

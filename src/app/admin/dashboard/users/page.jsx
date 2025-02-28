@@ -5,7 +5,7 @@ import prisma from "@/services/prisma";
 
 const Page = async () => {
 
-  const users = await prisma.user.findMany();  // Fetch all users from the database
+  const users = await prisma.user.findMany();  
 
   return (
     <section className="w-full px-4 mt-4">

@@ -2,7 +2,7 @@ import CommentList from "@/components/Dashboard/Comment/CommentList";
 import prisma from "@/services/prisma";
 
 const Page = async () => {
-  const comment = await prisma.comment.findMany();  // Fetch all users from the database
+  const comment = await prisma.comment.findMany();  
 
   return (
     <section className="w-full px-4 mt-4">

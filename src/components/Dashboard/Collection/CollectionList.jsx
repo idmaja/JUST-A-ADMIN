@@ -1,8 +1,10 @@
 "use client"
 
+import DeleteModal from "@/components/Utilities/DeleteModal";
 import { Play, Trash } from "@phosphor-icons/react";
 import Image from "next/image";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import SuccessModal from "../../Utilities/SuccessModal";
 
 // Function to group collections by user_email
 const groupByUserEmail = (collection) => {
@@ -20,12 +22,51 @@ const CollectionList = ({ collection }) => {
   // Group collections by user_email
   const groupedCollections = useMemo(() => groupByUserEmail(collection), [collection]);
 
-  const handleDelete = async (id) => {
-    const confirmed = confirm("Are you sure you want to delete this collection?");
-    if (!confirmed) return;
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [selectedCollection, setSelectedCollection] = useState(null);
 
-    await fetch(`/api/v1/admin/collection/${id}`, { method: "DELETE" });
-    location.reload();  // Reload the page after deletion
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showFailedModal, setShowFailedModal] = useState(false);
+
+  const handleOpenDeleteModal = (collection) => {
+    setSelectedCollection(collection);
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleCloseDeleteModal = () => {
+    setSelectedCollection(null);
+    setIsDeleteModalOpen(false);
+  };
+
+  const handleConfirmDelete = async () => {
+    if (selectedCollection) {
+      try {
+        const response = await fetch(`/api/v1/admin/collection/${selectedCollection.id}`, { 
+          method: "DELETE" 
+        });
+        const result = await response.json();
+
+        if (result.status === 200 && result.isDeleted) {
+          setShowSuccessModal(true);
+          setTimeout(() => {
+            setShowSuccessModal(false);
+            location.reload();
+          }, 2000);
+        } else {
+          setShowFailedModal(true);
+          setTimeout(() => {
+            setShowFailedModal(false);
+          }, 2000);
+        }
+      } catch (error) {
+        console.error("Error deleting collection: ", error);
+        setShowFailedModal(true);
+        setTimeout(() => {
+          setShowFailedModal(false);
+        }, 2000);
+      }
+      handleCloseDeleteModal();
+    }
   };
 
   return (
@@ -56,7 +97,7 @@ const CollectionList = ({ collection }) => {
 
                 <div className="ml-auto">
                   <button
-                    onClick={() => handleDelete(collectionItem.id)}
+                    onClick={() => handleOpenDeleteModal(collectionItem)}
                     className="flex items-center px-4 py-2 text-white transition-colors rounded bg-color-red hover:bg-color-primary hover:text-color-accent"
                   >
                     Delete
@@ -68,6 +109,21 @@ const CollectionList = ({ collection }) => {
           </div>
         </div>
       ))}
+      
+      <DeleteModal 
+        isOpen={isDeleteModalOpen}
+        onClose={handleCloseDeleteModal}
+        onConfirm={handleConfirmDelete}
+        title="Hapus Koleksi"
+        message={`Anda yakin ingin menghapus "${selectedCollection?.anime_title}" dari "${selectedCollection?.user_email}" ?`}
+      />
+
+      {showSuccessModal && (
+        <SuccessModal message="Koleksi berhasil dihapus!" />
+      )}
+      {showFailedModal && (
+        <SuccessModal message="Gagal menghapus koleksi, coba lagi!" />
+      )}
     </div>
   );
 };

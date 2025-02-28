@@ -3,16 +3,13 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Loading from '@/app/loading';
-import AnimeEditModal from './AnimeEditModal';
-import DeleteAnimeModal from './DeleteAnimeModal';
 import Pagination from '../../Utilities/Pagination';
 import { Trash } from '@phosphor-icons/react';
+import DeleteModal from '@/components/Utilities/DeleteModal';
 
 const AnimeFilterList = () => {
     const [anime, setAnime] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [selectedAnime, setSelectedAnime] = useState(null);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [animeToDelete, setAnimeToDelete] = useState(null);
 
@@ -67,32 +64,6 @@ const AnimeFilterList = () => {
         setIsDeleteModalOpen(true);
     };
 
-    const handleModalClose = () => {
-        setIsModalOpen(false);
-        setSelectedAnime(null);
-    };
-
-    const handleUpdate = async (updatedAnime) => {
-        try {
-            const response = await fetch(`/api/v1/admin/animes/${updatedAnime.id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(updatedAnime),
-            });
-
-            if (response.ok) {
-                setAnime(anime.map(a => (a.id === updatedAnime.id ? updatedAnime : a)));
-                setIsModalOpen(false);
-            } else {
-                console.error('Failed to update anime');
-            }
-        } catch (error) {
-            console.error('Error updating anime:', error);
-        }
-    };
-
     if (loading) {
         return <Loading />;
     }
@@ -139,19 +110,14 @@ const AnimeFilterList = () => {
             {/* Pagination component */}
             <Pagination page={currentPage} lastPage={lastPage} setPage={handlePageChange} />
 
-            {/* AnimeEditModal component */}
-            <AnimeEditModal
-                isOpen={isModalOpen}
-                onClose={handleModalClose}
-                anime={selectedAnime}
-                onUpdate={handleUpdate}
-            />
-
             {/* AnimeDeleteModal component */}
-            <DeleteAnimeModal
+
+            <DeleteModal 
                 isOpen={isDeleteModalOpen}
                 onClose={() => setIsDeleteModalOpen(false)}
                 onConfirm={handleDelete}
+                title="Hapus Anime"
+                message={`Anda yakin ingin menghapus anime "${animeToDelete?.anime_title}"?`}
             />
         </div>
     );

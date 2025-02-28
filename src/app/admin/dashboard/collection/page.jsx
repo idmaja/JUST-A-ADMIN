@@ -1,15 +1,8 @@
-// import { getAdminSession } from "@/services/auth-service";
 import CollectionList from "@/components/Dashboard/Collection/CollectionList";
 import prisma from "@/services/prisma";
 
 const Page = async () => {
-//   const admin = await getAdminSession();  // Ensure only admin users access this page
-
-//   if (!admin || admin.role !== "admin") {
-//     return <p>Access Denied</p>;
-//   }
-
-  const collection = await prisma.collection.findMany();  // Fetch all users from the database
+  const collection = await prisma.collection.findMany();  
 
   return (
     <section className="w-full px-4 mt-4">
