@@ -9,7 +9,7 @@ import Header from "@/components/Dashboard/Header";
 import { useState } from 'react'
 
 const Page = () => {
-    const [activeTab, setActiveTab] = useState('airing'); // State for active tab
+    const [activeTab, setActiveTab] = useState('airing');
 
     const [selectedAnime, setSelectedAnime] = useState(null);
     const [selectedAnimeRec, setSelectedAnimeRec] = useState(null);
@@ -27,7 +27,7 @@ const Page = () => {
             
             <Header title={'Animes'}/>
 
-            {/* Tab navigation */}
+            
             <div className="mt-4 tabs text-color-primary">
                 <button 
                     className={`tab ${activeTab === 'airing' ? 'active bg-color-yellow transition-all py-2.5 px-5 me-2 mb-2 text-sm font-medium rounded-full border border-color-secondary hover:bg-color-yellow hover:text-color-primary' : 'transition-all py-2.5 px-5 me-2 mb-2 text-sm font-medium text-color-white rounded-full border border-color-secondary hover:bg-color-yellow hover:text-color-primary'} mr-2`} 
@@ -58,7 +58,7 @@ const Page = () => {
                 </button>
             </div>
 
-            {/* Conditional rendering based on active tab */}
+            
             {activeTab === 'airing' && <AnimeAiringTab setSelectedAnime={setSelectedAnime} />}
             {activeTab === 'spring' && <AnimeRecentTab setSelectedAnimeRec={setSelectedAnimeRec} />}
             {activeTab === 'top' && <AnimeTopTab setSelectedAnimeTop={setSelectedAnimeTop} />}

@@ -17,7 +17,7 @@ const AnimeFilterList = () => {
     const itemsPerPage = 5; 
     const [animatedPage, setAnimatedPage] = useState(false);
 
-    // Fetch anime data on component mount
+
     useEffect(() => {
         const fetchAnime = async () => {
             try {
@@ -26,7 +26,7 @@ const AnimeFilterList = () => {
                 setAnime(data);
                 setLoading(false);
             } catch (error) {
-                console.error('Error fetching anime:', error);
+                
                 setLoading(false);
             }
         };
@@ -34,19 +34,19 @@ const AnimeFilterList = () => {
         fetchAnime();
     }, []);
 
-    // Pagination logic
+
     const lastPage = Math.ceil(anime.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentAnime = anime.slice(indexOfFirstItem, indexOfLastItem);
 
-    // Handle page change with animation
+
     const handlePageChange = (newPage) => {
-        setAnimatedPage(true); // Trigger animation
+        setAnimatedPage(true);
         setTimeout(() => {
-            setCurrentPage(newPage); // Change the page after animation
-            setAnimatedPage(false); // Remove animation
-        }, 300); // Animation duration (300ms)
+            setCurrentPage(newPage);
+            setAnimatedPage(false);
+        }, 300);
     };
 
     const handleDelete = async () => {
@@ -55,7 +55,7 @@ const AnimeFilterList = () => {
             setAnime(anime.filter(item => item.id !== animeToDelete.id));
             setIsDeleteModalOpen(false);
         } catch (error) {
-            console.error('Error deleting anime:', error);
+            
         }
     };
 
@@ -107,10 +107,10 @@ const AnimeFilterList = () => {
                 </tbody>
             </table>
 
-            {/* Pagination component */}
+            
             <Pagination page={currentPage} lastPage={lastPage} setPage={handlePageChange} />
 
-            {/* AnimeDeleteModal component */}
+            
 
             <DeleteModal 
                 isOpen={isDeleteModalOpen}

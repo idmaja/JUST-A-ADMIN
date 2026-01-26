@@ -52,7 +52,7 @@ const UserList = ({ users }) => {
           }, 2000);
         }
       } catch (error) {
-        console.error("Error deleting user: ", error);
+        
         setShowFailedModal(true);
         setTimeout(() => {
           setShowFailedModal(false);

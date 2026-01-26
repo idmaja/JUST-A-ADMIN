@@ -28,10 +28,10 @@ export default function LoginPage() {
     });
 
     if (result.error) {
-      setError(result.error); // Display error if sign-in fails
-      console.error("Sign in error:", result.error);
+      setError(result.error);
+      
     } else {
-      router.push("/"); // Redirect to dashboard after successful login
+      router.push("/");
     }
   };
 
@@ -43,14 +43,14 @@ export default function LoginPage() {
         transition={{ duration: 0.5 }}
         className="w-full max-w-md p-10 space-y-6 rounded-lg shadow-xl bg-slate-200"
       >
-        {/* Animated title */}
+        
         <h1 className="flex flex-col items-center justify-center mb-8 text-3xl font-extrabold text-center text-color-dark">
           <Image src="/just-a-logo.svg" width={1000} height={1000} className="w-16 h-16 mb-2" />
           Dashboard <span className="mt-1 text-color-yellow">JUST-A</span> 
         </h1>
 
 
-        {/* Form */}
+        
         <form onSubmit={handleSignIn} className="space-y-6">
           <AnimatePresence>
             {error && (

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import SuccessModal from "../../Utilities/SuccessModal";
 
-// Function to group collections by user_email
+
 const groupByUserEmail = (collection) => {
   return collection.reduce((acc, curr) => {
     if (!acc[curr.user_email]) {
@@ -19,7 +19,7 @@ const groupByUserEmail = (collection) => {
 
 const CollectionList = ({ collection }) => {
 
-  // Group collections by user_email
+
   const groupedCollections = useMemo(() => groupByUserEmail(collection), [collection]);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -59,7 +59,7 @@ const CollectionList = ({ collection }) => {
           }, 2000);
         }
       } catch (error) {
-        console.error("Error deleting collection: ", error);
+        
         setShowFailedModal(true);
         setTimeout(() => {
           setShowFailedModal(false);
@@ -81,7 +81,7 @@ const CollectionList = ({ collection }) => {
           <div className="space-y-4">
             {groupedCollections[userEmail].map((collectionItem) => (
               <div key={collectionItem.id} className="flex items-center p-4 space-x-6 rounded-lg shadow-md">
-                {/* Anime Image */}
+                
                 <Image 
                   src={collectionItem.anime_image} 
                   width={100} 

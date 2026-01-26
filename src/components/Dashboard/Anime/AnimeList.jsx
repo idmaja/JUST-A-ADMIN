@@ -9,7 +9,7 @@ const AnimeList = ({ api, titleValue, setSelectedAnime }) => {
       {api.data?.map((anime, index) => {
         return (
           <div
-            onClick={() => setSelectedAnime(anime)}  // Set anime to AnimeForm when clicked
+            onClick={() => setSelectedAnime(anime)}
             className="transition-all cursor-pointer text-color-primary hover:text-color-secondary"
             key={index}
           >

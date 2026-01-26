@@ -5,7 +5,7 @@ import { Play } from "@phosphor-icons/react/dist/ssr"
 import Link from "next/link"
 
 const Header = ({title, linkHref, linkTitle}) => {
-    // ANIMASI BUAT TABEL
+
     const [showHeader, setShowHeader] = useState(false);
 
     useEffect(() => {

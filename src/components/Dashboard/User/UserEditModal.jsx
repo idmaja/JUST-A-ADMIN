@@ -7,7 +7,7 @@ const UserEditModal = ({ user, onClose }) => {
   const [username, setUsername] = useState(user.username);
   const [password, setPassword] = useState(user.password);
   const [role, setRole] = useState(user.role);
-  const [isMounted, setIsMounted] = useState(false); // For animation
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -23,7 +23,7 @@ const UserEditModal = ({ user, onClose }) => {
     });
 
     onClose();
-    location.reload();  // Reload the page after editing
+    location.reload();
   };
 
   return (
@@ -62,7 +62,7 @@ const UserEditModal = ({ user, onClose }) => {
           />
         </div>
 
-        {/* Hanya tampilkan role jika user bukan "user" */}
+        
         {user.role !== "user" && (
           <div className="mb-4">
             <label className="block text-color-primary">Role</label>

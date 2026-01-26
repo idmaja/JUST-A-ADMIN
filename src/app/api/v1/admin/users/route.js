@@ -4,7 +4,7 @@ export async function POST(req) {
   try {
     const { username, email, password, role } = await req.json();
 
-    // Pastikan semua field tersedia
+
     if (!username || !email || !password || !role) {
       return new Response(
         JSON.stringify({ status: 400, message: "All fields are required" }),
@@ -12,7 +12,7 @@ export async function POST(req) {
       );
     }
 
-    // Cek apakah email sudah ada
+
     const existingUser = await prisma.user.findUnique({ where: { email } });
 
     if (existingUser) {
@@ -22,7 +22,7 @@ export async function POST(req) {
       );
     }
 
-    // Simpan user baru
+
     const newUser = await prisma.user.create({
       data: { username, email, password, role }
     });
@@ -33,7 +33,7 @@ export async function POST(req) {
     );
 
   } catch (error) {
-    console.error("POST /api/v1/admin/users error:", error);
+    
     return new Response(
       JSON.stringify({ status: 500, isCreated: false, error: error.message }),
       { headers: { "Content-Type": "application/json" } }

@@ -7,7 +7,7 @@ const UserListHome = ({ users }) => {
   const [index, setIndex] = useState(0); 
   const rowsPerPage = 2; 
 
-  // ANIMASI BUAT TABEL
+
   const [showTables, setShowTables] = useState(false);
 
   useEffect(() => {

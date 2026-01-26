@@ -15,20 +15,20 @@ const roboto = Roboto({
 });
 
 export default function RootLayout({ children }) {
-  const [isNavOpen, setIsNavOpen] = useState(true); // State to control navbar visibility
-  const pathname = usePathname(); // Get the current route
+  const [isNavOpen, setIsNavOpen] = useState(true);
+  const pathname = usePathname();
 
-  // Automatically hide the sidebar on /auth/login
-  const isLoginPage = pathname === '/auth/login'; // Check if we are on the login page
+
+  const isLoginPage = pathname === '/auth/login';
   
-  // Function to toggle the sidebar visibility
+
   const toggleNavbar = () => {
     setIsNavOpen(!isNavOpen);
   };
 
   const handleSignOut = () => {
     signOut({
-      callbackUrl: '/auth/login', // Redirects the user to the login page after signing out
+      callbackUrl: '/auth/login',
     });
   };
 
@@ -41,10 +41,10 @@ export default function RootLayout({ children }) {
       <body className={`${roboto.className} antialiased bg-color-dark scroll-smooth`}>
         <SessionProvider>
           <div className="flex min-h-screen">
-            {/* Only render the sidebar if we are NOT on the /auth/login page */}
+            
             {!isLoginPage && (
               <>
-                {/* Toggle button for showing/hiding the navbar */}
+                
                 <button
                   onClick={toggleNavbar}
                   className="fixed z-50 p-2 bg-gray-600 rounded-lg text-color-primary top-4 left-4"
@@ -52,7 +52,7 @@ export default function RootLayout({ children }) {
                   <List size={32} weight="bold" />
                 </button>
 
-                {/* Sidebar */}
+                
                 <nav
                   className={`fixed left-0 top-0 w-64 bg-color-dark text-white h-full py-4 transform transition-transform duration-300 ease-in-out flex flex-col ${
                     isNavOpen ? 'translate-x-0' : '-translate-x-full'
@@ -111,7 +111,7 @@ export default function RootLayout({ children }) {
                     </li>
                   </ul>
 
-                  {/* Centering Sign Out Button */}
+                  
                   <div className="flex justify-center mb-4">
                     <button
                       onClick={handleSignOut}
@@ -125,7 +125,7 @@ export default function RootLayout({ children }) {
               </>
             )}
 
-            {/* Main content area */}
+            
             <main
               className={`flex-grow p-8 transition-margin-left duration-300 ease-in-out ${!isLoginPage && isNavOpen ? 'ml-64' : 'ml-0'}`}
             >

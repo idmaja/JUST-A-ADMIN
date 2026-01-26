@@ -71,7 +71,7 @@ const AnimeForm = ({ selectedAnime, selectedAnimeRec, selectedAnimeTop, clearFor
       const result = await response.json();
 
       if (result.status === 409) {
-        // alert(result.message);
+
         setShowAlreadyModal(true); 
         setTimeout(() => {
           setShowAlreadyModal(false); 
@@ -89,7 +89,7 @@ const AnimeForm = ({ selectedAnime, selectedAnimeRec, selectedAnimeTop, clearFor
         }, 2000);
       }
     } catch (error) {
-      console.error('Error:', error);
+      
     }
   };
 

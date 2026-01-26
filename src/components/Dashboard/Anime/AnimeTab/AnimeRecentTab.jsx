@@ -18,7 +18,7 @@ const AnimeRecentTab = ({ setSelectedAnimeRec }) => {
                 const anime = await getAnimeResponse("seasons/2024/spring", `page=${pageRec}&&limit=8`);
                 setAnimeRec(anime);
             } catch (error) {
-                console.error("Error fetching anime:", error);
+                
             }
         }, 1000);
     };

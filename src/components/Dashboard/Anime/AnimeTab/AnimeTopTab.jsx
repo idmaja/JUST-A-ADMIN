@@ -18,7 +18,7 @@ const AnimeTopTab = ({ setSelectedAnimeTop }) => {
                 const anime = await getAnimeResponse("top/anime", `page=${pageTop}&&limit=8`);
                 setAnimeTop(anime);
             } catch (error) {
-                console.error("Error fetching anime:", error);
+                
             }
         }, 1000);
     };

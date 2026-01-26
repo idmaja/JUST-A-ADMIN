@@ -1,15 +1,15 @@
 import React from 'react';
 
 const Pagination = ({ page, lastPage, setPage }) => {
-    // Helper function to generate the array of page numbers
+
     const getPageNumbers = () => {
         const pages = [];
-        const maxVisiblePages = 5;  // Control how many pages to display at a time
+        const maxVisiblePages = 5;
 
         let startPage = Math.max(1, page - Math.floor(maxVisiblePages / 2));
         let endPage = Math.min(lastPage, startPage + maxVisiblePages - 1);
 
-        // If there are fewer pages than maxVisiblePages, adjust startPage
+
         if (endPage - startPage < maxVisiblePages - 1) {
             startPage = Math.max(1, endPage - maxVisiblePages + 1);
         }
@@ -22,7 +22,7 @@ const Pagination = ({ page, lastPage, setPage }) => {
 
     return (
         <div className="flex items-center justify-center gap-2 py-4 text-2xl text-color-primary">
-            {/* Previous Button */}
+            
             {page > 1 && (
                 <button
                     className="px-3 py-2 text-sm font-bold text-white transition-all border border-blue-500 rounded-full hover:bg-color-secondary"
@@ -32,7 +32,7 @@ const Pagination = ({ page, lastPage, setPage }) => {
                 </button>
             )}
 
-            {/* Page number buttons */}
+            
             {getPageNumbers().map((pageNum) => (
                 <button
                     key={pageNum}
@@ -47,7 +47,7 @@ const Pagination = ({ page, lastPage, setPage }) => {
                 </button>
             ))}
 
-            {/* Next Button */}
+            
             {page < lastPage && (
                 <button
                     className="px-3 py-2 text-sm font-bold text-white transition-all border border-blue-500 rounded-full hover:bg-color-secondary"

@@ -5,20 +5,20 @@ import { Play, Trash } from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
 import SuccessModal from "../../Utilities/SuccessModal";
 
-// Function to group comments by username
+
 const groupByUsername = (comments) => {
   return comments.reduce((acc, curr) => {
     if (!acc[curr.username]) {
-      acc[curr.username] = []; // Create a new array for each username
+      acc[curr.username] = [];
     }
-    acc[curr.username].push(curr); // Push comments with the same username to the array
+    acc[curr.username].push(curr);
     return acc;
   }, {});
 };
 
 const CommentList = ({ comment }) => {
 
-  // Group comments by username
+
   const groupedComments = useMemo(() => groupByUsername(comment), [comment]);
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -59,7 +59,7 @@ const CommentList = ({ comment }) => {
           }, 2000);
         }
       } catch (error) {
-        console.error("Error deleting comment: ", error);
+        
         setShowFailedModal(true);
         setTimeout(() => {
           setShowFailedModal(false);
