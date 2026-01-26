@@ -1,3 +1,4 @@
+![JUST-A Admin Dashboard - Login Page](https://res.cloudinary.com/dmsvn9nzs/image/upload/v1769404261/d49add76-0ec8-4e8e-a73a-a77ed572a7cb.png)
 ![JUST-A Admin Dashboard](https://res.cloudinary.com/dmsvn9nzs/image/upload/v1769051583/project-justa-admin_jyrku4.png)
 
 # JUST-A Admin Dashboard
