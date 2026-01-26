@@ -1,3 +1,5 @@
+![JUST-A Admin Dashboard](https://res.cloudinary.com/dmsvn9nzs/image/upload/v1769051583/project-justa-admin_jyrku4.png)
+
 # JUST-A Admin Dashboard
 
 A comprehensive admin dashboard for managing anime listings, user accounts, collections, and comments. Built with Next.js 14, this application provides a complete administrative interface for an anime catalog system.
